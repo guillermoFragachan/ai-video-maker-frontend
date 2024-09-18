@@ -1,3 +1,4 @@
+import {Sidebar} from './components/sidebar';
 import React, {useEffect, useState} from 'react';
 import { Button } from 'primereact/button';
 import 'primereact/resources/themes/saga-blue/theme.css'; 
@@ -15,21 +16,17 @@ function App() {
   return (
     <div className="p-d-flex p-ai-center p-jc-center min-h-screen" style={{}}>
 
-<div className="p-d-flex p-jc-center p-ai-center" style={{ height: '100vh', backgroundColor: '#1e1e1e', display:"flex"  }}>
+    <Sidebar/>
 
-      <div style={{
-        width:"20%"
-      }}></div>
       <Chat /> 
-      </div>
 
-      </div>
+      <Button label="Click Me" icon="pi pi-check" className="p-button-raised p-button-success" />
+    </div>
   );
 }
 
 
 
 
-
-
 export default App;
+
