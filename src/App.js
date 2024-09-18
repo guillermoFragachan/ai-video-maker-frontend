@@ -16,11 +16,13 @@ function App() {
   return (
     <div className="p-d-flex p-ai-center p-jc-center min-h-screen" style={{}}>
 
-    <Sidebar/>
+   <div style={{display: 'flex'}}>
 
-      <Chat /> 
+   <Sidebar/>
 
-      <Button label="Click Me" icon="pi pi-check" className="p-button-raised p-button-success" />
+<Chat /> 
+   </div>
+
     </div>
   );
 }
