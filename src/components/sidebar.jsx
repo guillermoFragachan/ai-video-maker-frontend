@@ -10,8 +10,8 @@ export function Sidebar() {
       <div style={styles.topSection}>
         {/* Search Bar */}
         <div style={styles.searchContainer}>
-          <span cl assName="p-input-icon-left">
-            <i className="pi pi-search" />
+          <span className="p-input-icon-left">
+            <i className="pi pi-search" style={{ color: 'white' }}/>
           </span>
 
             <InputText placeholder="Search..." style={styles.searchInput} />
@@ -37,7 +37,7 @@ const styles = {
   sidebarContainer: {
     width: '20%', // 20% of the screen width
     height: '100vh', // Full height of the screen
-    backgroundColor: '#f4f4f4', // Light gray background
+    backgroundColor: '#444', // dark background
     display: 'flex',
     flexDirection: 'column',
     padding: '1rem',
@@ -57,8 +57,8 @@ const styles = {
   },
   searchInput: {
     width: '100%',
-    marginLeft: "0.5em",
-    marginRight: "0",
+    marginLeft: "1.5em",
+    marginRight: "0.5em",
   },
   newConversationIcon: {
     flexShrink: 0, // Prevent icon from shrinking
@@ -68,8 +68,11 @@ const styles = {
     overflowY: 'auto', // Scrollable list if there are too many conversations
   },
   conversationRow: {
-    padding: '0.75rem',
-    borderBottom: '1px solid #ddd', // Line between conversations
+    padding: '10px',
+    borderBottom: '1px solid #ddd',
     cursor: 'pointer',
+    color: 'white', // Text color changed to white
+    marginBottom: '5px',
+    borderRadius: '4px',
   },
 };
