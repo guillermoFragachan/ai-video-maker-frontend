@@ -1,31 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Menu } from 'primereact/menu';
+
 
 export function Sidebar() {
+    const[searchTerm, setSearchTerm] = useState('');
+
+    const [conversations, setConversations] = useState([]);
+
+    // Triggered when the "New Conversation" button is clicked
+    const handleNewConversation = () => {
+      const newConversation = ` Conversation ${conversations.length + 1}`;
+      setConversations([...conversations, newConversation]);
+      console.log('New conversation triggered:', newConversation);  
+      };
+
+    // Handle search input change
+    const handleSearchChange = (e) => {
+      setSearchTerm(e.target.value);
+      // console.log('Searching for:', e.target);
+     };
+    
+    const filteredConversations = conversations.filter(conversation =>
+      conversation.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div style={styles.sidebarContainer}>
       {/* Top Section with Icons and Search */}
       <div style={styles.topSection}>
+
         {/* Search Bar */}
         <div style={styles.searchContainer}>
           <span className="p-input-icon-left">
             <i className="pi pi-search" style={{ color: 'white' }}/>
           </span>
 
-            <InputText placeholder="Search..." style={styles.searchInput} />
+          <InputText
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            style={styles.searchInput}
+          />
         </div>
 
-        {/* New Conversation Icon */}
-        <Button icon="pi pi-plus" className="p-button-rounded p-button-info" style={styles.newConversationIcon} />
+          {/* New Conversation Icon */}
+            <Button
+          icon="pi pi-plus"
+          className="p-button-rounded p-button-info"
+          style={styles.newConversationIcon}
+          onClick={handleNewConversation} // Click event for new conversation button
+        />
       </div>
 
       {/* Conversation List */}
       <div style={styles.conversationList}>
-        <div style={styles.conversationRow}>Conversation 1</div>
-        <div style={styles.conversationRow}>Conversation 2</div>
-        <div style={styles.conversationRow}>Conversation 3</div>
+        {filteredConversations.map((conversation, index)=>{
+          return  <div key={index} style={styles.conversationRow}> {conversation}</div>
+        })}
+
         {/* Add more conversations as needed */}
       </div>
     </div>
